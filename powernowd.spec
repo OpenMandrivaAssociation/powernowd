@@ -1,7 +1,7 @@
 Summary:		Daemon to adjust speed of your laptop processor
 Name:			powernowd
 Version:		0.97
-Release:		%mkrel 2
+Release:		%mkrel 3
 License:		GPL
 Group:			System/Servers
 Source0:		http://www.deater.net/john/%{name}-%{version}.tar.bz2
