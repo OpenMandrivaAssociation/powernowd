@@ -5,8 +5,8 @@ Release:		%mkrel 2
 License:		GPL
 Group:			System/Servers
 Source0:		http://www.deater.net/john/%{name}-%{version}.tar.bz2
-Source1:		powernowd.rc.bz2
-Source2:		powernowd.8.bz2
+Source1:		powernowd.rc
+Source2:		powernowd.8
 URL:			http://www.deater.net/john/%{name}.html
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 ExclusiveArch:		%{ix86} ia64 x86_64 amd64 ppc
@@ -46,13 +46,11 @@ rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%{_sbindir}
 install -m755 %{name} $RPM_BUILD_ROOT/%{_sbindir}
 
-bzcat %{SOURCE2} >%{name}.8
 mkdir -p $RPM_BUILD_ROOT/%{_mandir}/man8
-install -m644 powernowd.8 $RPM_BUILD_ROOT/%{_mandir}/man8
+install -m644 %{SOURCE2} $RPM_BUILD_ROOT/%{_mandir}/man8
 
 mkdir -p $RPM_BUILD_ROOT/%{_initrddir}/
-bzcat %{SOURCE1} > powernowd.rc
-install -m755 powernowd.rc $RPM_BUILD_ROOT/%{_initrddir}/%{name}
+install -m755 %{SOURCE1} $RPM_BUILD_ROOT/%{_initrddir}/%{name}
 
 mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/
 install -m644 powernowd.sysconfig $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/%{name}
