@@ -1,8 +1,8 @@
 Summary:		Daemon to adjust speed of your laptop processor
 Name:			powernowd
-Version:		0.97
-Release:		%mkrel 3
-License:		GPL
+Version:		1.00
+Release:		%mkrel 1
+License:		GPLv2 
 Group:			System/Servers
 Source0:		http://www.deater.net/john/%{name}-%{version}.tar.bz2
 Source1:		powernowd.rc
@@ -42,22 +42,22 @@ cat > powernowd.sysconfig <<EOF
 OPTIONS=""
 
 EOF
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/%{_sbindir}
-install -m755 %{name} $RPM_BUILD_ROOT/%{_sbindir}
+rm -rf %{buildroot}
+mkdir -p %{buildroot}/%{_sbindir}
+install -m755 %{name} %{buildroot}/%{_sbindir}
 
-mkdir -p $RPM_BUILD_ROOT/%{_mandir}/man8
-install -m644 %{SOURCE2} $RPM_BUILD_ROOT/%{_mandir}/man8
+mkdir -p %{buildroot}/%{_mandir}/man8
+install -m644 %{SOURCE2} %{buildroot}/%{_mandir}/man8
 
-mkdir -p $RPM_BUILD_ROOT/%{_initrddir}/
-install -m755 %{SOURCE1} $RPM_BUILD_ROOT/%{_initrddir}/%{name}
+mkdir -p %{buildroot}/%{_initrddir}/
+install -m755 %{SOURCE1} %{buildroot}/%{_initrddir}/%{name}
 
-mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/
-install -m644 powernowd.sysconfig $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/%{name}
+mkdir -p %{buildroot}/%{_sysconfdir}/sysconfig/
+install -m644 powernowd.sysconfig %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
 
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %_post_service %{name}
@@ -68,9 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %doc README
+%attr(700,root,root) %{_initrddir}/%{name}
+%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
 %{_sbindir}/*
 %{_mandir}/man8/*
-%config(noreplace) %{_initrddir}/%{name}
-%config(noreplace) %{_sysconfdir}/sysconfig/%{name}
-
-
