@@ -1,7 +1,7 @@
 Summary:		Daemon to adjust speed of your laptop processor
 Name:			powernowd
 Version:		1.00
-Release:		%mkrel 8
+Release:		9
 License:		GPLv2 
 Group:			System/Servers
 Source0:		http://www.deater.net/john/%{name}-%{version}.tar.bz2
@@ -11,6 +11,8 @@ URL:			http://www.deater.net/john/%{name}.html
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 ExclusiveArch:		%{ix86} ia64 x86_64 amd64 ppc
 Requires(pre):		rpm-helper
+
+%define debug_package %{nil}
 
 %description
 This is a very simple daemon that will adjust the speed of your 
