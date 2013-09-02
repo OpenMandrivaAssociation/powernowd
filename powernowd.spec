@@ -1,3 +1,9 @@
+# powernowd is obsolete, and the developer himself doesn't use it anymore.
+# You can configure the up_threshold in cpufreq_ondemand, it's a LOT faster
+# at sampling (10 microseconds on a core2) so it saves more power and
+# gives much higher performance, and it even has an option to ignore niced tasks like this.
+# OBSOLETED
+
 Summary:		Daemon to adjust speed of your laptop processor
 Name:			powernowd
 Version:		1.00
