@@ -8,7 +8,6 @@ Source0:		http://www.deater.net/john/%{name}-%{version}.tar.bz2
 Source1:		powernowd.rc
 Source2:		powernowd.8
 URL:			http://www.deater.net/john/%{name}.html
-BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 ExclusiveArch:		%{ix86} ia64 x86_64 amd64 ppc
 Requires(pre):		rpm-helper
 
@@ -44,7 +43,6 @@ cat > powernowd.sysconfig <<EOF
 OPTIONS=""
 
 EOF
-rm -rf %{buildroot}
 mkdir -p %{buildroot}/%{_sbindir}
 install -m755 %{name} %{buildroot}/%{_sbindir}
 
@@ -58,9 +56,6 @@ mkdir -p %{buildroot}/%{_sysconfdir}/sysconfig/
 install -m644 powernowd.sysconfig %{buildroot}/%{_sysconfdir}/sysconfig/%{name}
 
 
-%clean
-rm -rf %{buildroot}
-
 %post
 %_post_service %{name}
 
@@ -68,7 +63,6 @@ rm -rf %{buildroot}
 %_preun_service %{name}
 
 %files
-%defattr(-,root,root)
 %doc README
 %attr(700,root,root) %{_initrddir}/%{name}
 %config(noreplace) %{_sysconfdir}/sysconfig/%{name}
