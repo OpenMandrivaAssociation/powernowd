@@ -13,7 +13,7 @@ Group:			System/Servers
 Source0:		http://www.deater.net/john/%{name}-%{version}.tar.bz2
 Source1:		powernowd.rc
 Source2:		powernowd.8
-URL:			http://www.deater.net/john/%{name}.html
+URL:			https://www.deater.net/john/%{name}.html
 ExclusiveArch:		%{ix86} ia64 x86_64 amd64 ppc
 Requires(pre):		rpm-helper
 
