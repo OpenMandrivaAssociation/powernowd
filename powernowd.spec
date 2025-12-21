@@ -19,6 +19,7 @@ Requires(pre):		rpm-helper
 
 %define debug_package %{nil}
 
+BuildRequires:	make
 %description
 This is a very simple daemon that will adjust the speed of your 
 CPU depending on system load.
